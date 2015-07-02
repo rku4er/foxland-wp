@@ -1,0 +1,39 @@
+*::-moz-selection {
+    color: #fff;
+    background: $brand-primary;
+    text-shadow: none;
+}
+
+*::selection {
+    color: #fff;
+    background: $brand-primary;
+    text-shadow: none;
+}
+
+.row{
+    width: auto;    
+}
+    
+html,
+body {
+    height: 100%;
+}
+.wrap {
+    padding: 0 0 50px;
+    >.content{
+        p{
+            margin-bottom: 2em;
+        }
+    }
+}
+.navbar-fixed-top + .wrap{
+    padding-top: 110px;
+}
+.navbar-default .form-inline .input-group .form-control{
+     width: auto;
+}
+.list-group-item.active .popover-content, 
+.list-group-item.active:focus .popover-content, 
+.list-group-item.active:hover .popover-content{
+     color: $gray-dark;
+}

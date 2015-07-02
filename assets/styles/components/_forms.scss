@@ -1,0 +1,55 @@
+.gform_wrapper ul {
+  @extend .list-unstyled;
+}
+.gform_wrapper li {
+  @extend .form-group;
+}
+.gform_wrapper form {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+.gform_wrapper .gfield_required {
+  padding-left: 1px;
+  //color: $state-danger-text;
+  color: $brand-primary;
+}
+.gform_footer{
+    margin-top: 15px;
+}
+.ginput_container input,
+.ginput_container select,
+.ginput_container textarea {
+  @extend .form-control;
+}
+.ginput_container textarea {
+  resize: vertical;
+  height: auto;
+}
+.gform_button {
+  @extend .btn;
+  @extend .btn-primary;
+}
+.gform_wrapper .gfield_error {
+  .gfield_label {
+    color: $state-danger-text;
+  }
+  input,
+  select,
+  textarea {
+    border-color: $alert-danger-border;
+    background-color: $alert-danger-bg;
+    color: $alert-danger-text;
+    @include form-control-focus($alert-danger-text);
+  }
+}
+.validation_error {
+  @extend .alert;
+  @extend .alert-danger;
+}
+.validation_message{
+  display: none;
+}
+#gforms_confirmation_message {
+  @extend .alert;
+  @extend .alert-success;
+}
