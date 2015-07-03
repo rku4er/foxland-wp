@@ -33,7 +33,7 @@
             wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new NavWalker(), 'menu_class' => 'nav navbar-nav']);
           endif;
           ?>
-          <?php echo do_shortcode('[custom_socials]'); ?>
+          <?php echo do_shortcode('[socials]'); ?>
         </nav>
 
   </div>

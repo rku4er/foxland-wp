@@ -1,86 +1,147 @@
-.carousel.carousel-fade {
-    .item {
-        opacity: 0;
-        @include transition-property(opacity);
-        &.active {
+.carousel{
+    margin-bottom: $line-height-computed;
+    &.carousel-fade {
+        .item {
+            opacity: 0;
+            @include transition-property(opacity);
+            &.active {
+                opacity: 1;
+                &.left, &.right {
+                    left: 0;
+                    z-index: 1;
+                    opacity: 0;
+                }
+            }
+        }
+        .next.left,
+        .prev.right {
             opacity: 1;
-            &.left, &.right {
-                left: 0;
-                z-index: 1;
-                opacity: 0;
+        }
+    }
+    &.fullscreen {
+        position: fixed;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #000;
+        .carousel-indicators {
+            bottom: 15%;
+        }
+        .carousel-inner {
+            height: 100%;
+        }
+        .item {
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            background-position: 50% 50%;
+            height: 100%;
+            width: 100%;
+            -webkit-transition-duration: 2s;
+            -moz-transition-duration: 2s;
+            transition-duration: 2s;
+            >img {
+                display: none;
+            }
+        }
+        .carousel-caption {
+            display: table;
+            position: static;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            color: inherit;
+            padding: 0 5%;
+            h3 {
+                font-size: 36px;
+                font-weight: 400;
+                text-transform: uppercase;
+                -webkit-animation-duration: 2s;
+                -moz-animation-duration: 2s;
+                animation-duration: 2s;
+                -webkit-animation-delay: 0.5s;
+                -moz-animation-delay: 0.5s;
+                animation-delay: 0.5s;
+            }
+            p {
+                font-size: 20px;
+                -webkit-animation-duration: 2s;
+                -moz-animation-duration: 2s;
+                animation-duration: 2s;
+                -webkit-animation-delay: 1.5s;
+                -moz-animation-delay: 1.5s;
+                animation-delay: 1.5s;
             }
         }
     }
-    .next.left,
-    .prev.right {
-        opacity: 1;
+    .carousel-control{
+         transition: all .2s ease-in-out;
+         z-index: 11;
     }
-}
-.carousel.fullscreen {
-    position: fixed;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #000;
-    .carousel-indicators {
-        bottom: 15%;
-    }
-    .carousel-inner {
-        height: 100%;
-    }
-    .item {
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
-        background-position: 50% 50%;
-        height: 100%;
-        width: 100%;
-        -webkit-transition-duration: 2s;
-        -moz-transition-duration: 2s;
-        transition-duration: 2s;
-        >img {
-            display: none;
-        }
-    }
-    .carousel-caption {
-        display: table;
-        position: static;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        right: 0;
-        color: inherit;
-        padding: 0 5%;
+    .carousel-caption{
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        top: 10%;
+        bottom: 10%;
+        padding: 0;
+
         >div {
-            display: table-cell;
-            vertical-align: middle;
+            display: table;
+            width: 100%;
+            height: 100%;
+
+            >div{
+                display: table-cell;
+                vertical-align: bottom;
+            }
         }
-        h3 {
-            font-size: 36px;
-            font-weight: 400;
-            text-transform: uppercase;
-            -webkit-animation-duration: 2s;
-            -moz-animation-duration: 2s;
-            animation-duration: 2s;
-            -webkit-animation-delay: 0.5s;
-            -moz-animation-delay: 0.5s;
-            animation-delay: 0.5s;
-        }
-        p {
-            font-size: 20px;
-            -webkit-animation-duration: 2s;
-            -moz-animation-duration: 2s;
-            animation-duration: 2s;
-            -webkit-animation-delay: 1.5s;
-            -moz-animation-delay: 1.5s;
-            animation-delay: 1.5s;
-        }
+
+        &.align-left{
+            >div{
+                >div{
+                    text-align: left;
+                }
+            }
+        } 
+        &.align-center{
+            >div{
+                >div{
+                    text-align: center;
+                }
+            }
+        } 
+        &.align-right{
+            >div{
+                >div{
+                    text-align: right;
+                }
+            }
+        } 
+
+        &.valign-top{
+            >div{
+                >div{
+                    vertical-align: top;
+                }
+            }
+        } 
+        &.valign-middle{
+            >div{
+                >div{
+                    vertical-align: middle;
+                }
+            }
+        } 
+        &.valign-bottom{
+            >div{
+                >div{
+                    vertical-align: bottom;
+                }
+            }
+        } 
     }
-}
-#yourElement {
-    -vendor-animation-duration: 3s;
-    -vendor-animation-delay: 2s;
-    -vendor-animation-iteration-count: infinite;
 }

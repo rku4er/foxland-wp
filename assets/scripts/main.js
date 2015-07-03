@@ -55,6 +55,10 @@
         //google.maps.event.addDomListener(window, 'load', initMap);
 
         $(window).load(function(){
+            $('.navbar-fixed-top').css({
+                'margin-top' : $('html').css('margin-top')
+            });
+
             $('body').addClass('loaded');
 
             $('.carousel').each(function() {
@@ -83,7 +87,7 @@
               .on('click', function(e) {e.preventDefault(); return true;})
               .popover();
 
-            Intense($('img'));
+            new Intense($('img'));
 
             $('.datepicker').datepicker({
                 language:   'en',

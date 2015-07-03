@@ -1,27 +1,23 @@
 .socials{
-    padding: 12px 0;
+    padding: 10px 0;
     white-space: nowrap;
     display: inline-block;
     text-align: center;
-    font-family: Oswald, sans-serif;
-    font-weight: 400;
-    font-size: 18px;
 
     >span{
         display: none;
         @media (min-width: $screen-md-min){
             display: inline;
+            margin-right: 0.5em;
         }
     }
     a{
-        color: #fff;
+        color: $gray-dark;
         border-radius: 3px;
         display: inline-block;
         position: relative;
         text-align: center;
         transition: all .2s ease;
-        color: #fff;
-        font-size: 1.5em;
         -webkit-animation-duration: 1s;
         animation-duration: 1s;
         -webkit-animation-fill-mode: both;
@@ -33,7 +29,7 @@
 
         &:hover,
         &:focus{
-            color: #fff;
+            color: $gray;
             -webkit-animation-name:rubberBand;
                     animation-name:rubberBand;
             -webkit-transform-origin: center;

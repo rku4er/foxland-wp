@@ -23,7 +23,6 @@ $sage_includes = [
   'lib/extras.php',                // Custom functions
   'lib/shortcodes.php',            // Custom shortcodes
   'lib/options.php',               // Theme Options
-  'lib/theme-options.php',         // Option Tree
 ];
 
 foreach ($sage_includes as $file) {

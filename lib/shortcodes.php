@@ -9,7 +9,7 @@ namespace Roots\Sage\Shortcodes;
 /**
  * Fullscreen slider shortcode
  */
-add_shortcode( 'custom_slider', __NAMESPACE__.'\\slider_init' );
+add_shortcode( 'slider', __NAMESPACE__.'\\slider_init' );
 function slider_init( $attr ){
     extract(
         shortcode_atts( array(
@@ -21,7 +21,7 @@ function slider_init( $attr ){
             "keyboard"   => true,
             "arrows"     => true,
             "bullets"    => true,
-            "fullscreen" => true,
+            "fullscreen" => false,
         ), $attr )
     );
 
@@ -52,7 +52,7 @@ function slider_init( $attr ){
                 $bullets     = $defaults['bullets'];
                 $fullscreen  = $defaults['fullscreen'];
 
-                $div_class   = 'carousel' . (($animation === 'fade') ? ' slide carousel-fade' : ' slide') . ($fullscreen ? ' fullscreen' : '');
+                $div_class   = 'carousel carousel-inline' . (($animation === 'fade') ? ' slide carousel-fade' : ' slide') . ($fullscreen ? ' fullscreen' : '');
                 $inner_class = 'carousel-inner';
                 $id          = 'custom-carousel-'. $GLOBALS['carousel_count'];
 
@@ -67,7 +67,7 @@ function slider_init( $attr ){
                         $i++;
 
                         $active_class = ($i == 0) ? ' active' : '';
-                        $image_obj = wp_get_attachment_image_src($slide['image'], 'home-slider');
+                        $image_obj = wp_get_attachment_image_src($slide['image'], 'slider');
 
                         $image = sprintf(
                             '<img src="%s" alt="">',
@@ -109,11 +109,13 @@ function slider_init( $attr ){
                                 . $slide['caption_text'] . '</div>';
                         }
 
-                        if($slide['use_caption']){
+                        if($slide['more_options']){
                             $caption = sprintf(
-                                '<div class="carousel-caption"><div>%s%s</div></div>',
-                                $title_html,
-                                $caption_html
+                                '<div class="carousel-caption %s %s"><div><div>%s%s</div></div></div>',
+                                $slide['align'] ? 'align-'.$slide['align'] : 'align-center',
+                                $slide['vertical_align'] ? 'valign-'.$slide['vertical_align'] : 'valign-bottom',
+                                $slide['title_text'] ? $title_html : '',
+                                $slide['caption_text'] ? $caption_html : ''
                             );
                         }
 
@@ -125,9 +127,9 @@ function slider_init( $attr ){
                         );
 
                         $items[] = sprintf(
-                          '<div class="%s" style="%s">%s</div>',
+                          '<div class="%s">%s%s</div>',
                           'item' . $active_class,
-                          $background,
+                          $image,
                           $caption
                         );
                     endforeach;
@@ -143,7 +145,7 @@ function slider_init( $attr ){
                       ( $bullets ) ? '<ol class="carousel-indicators">' . implode( $indicators ) . '</ol>' : '',
                       esc_attr( $inner_class ),
                       implode($items),
-                      ( $bullets ) ? sprintf( '%s%s',
+                      ( $arrows ) ? sprintf( '%s%s',
                           '<a class="left carousel-control"  href="' . esc_url( '#' . $id ) . '" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>',
                           '<a class="right carousel-control" href="' . esc_url( '#' . $id ) . '" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>'
                       ) : ''
@@ -162,7 +164,7 @@ function slider_init( $attr ){
  * Socials
  */
 
-add_shortcode( 'custom_socials', __NAMESPACE__.'\\socials_init' );
+add_shortcode( 'socials', __NAMESPACE__.'\\socials_init' );
 function socials_init( $attr ){
     extract( shortcode_atts( array(
         'label' => false
@@ -170,7 +172,9 @@ function socials_init( $attr ){
 
     $socials = function_exists('get_field') ? get_field('socials', 'options') : false;
     if($socials){
-        $buffer = '<span class="socials"><span>' . $label . '</span>';
+        $buffer = '<span class="socials">';
+        $buffer .= $label ? '<span>'.$label.'</span>' : '';
+
         foreach( $socials as $social ){
             $buffer .= '<a href="'. $social['social_url'] . '" target="_blank"><i class="fa fa-'. strtolower($social['social_name']) .'"></i></a>';
         }
@@ -183,7 +187,7 @@ function socials_init( $attr ){
  * Services
  */
 
-add_shortcode( 'custom_services', __NAMESPACE__.'\\services_init' );
+add_shortcode( 'services', __NAMESPACE__.'\\services_init' );
 function services_init( $attr ){
     extract( shortcode_atts( array(), $attr ));
 
