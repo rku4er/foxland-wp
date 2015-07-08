@@ -1,0 +1,58 @@
+.tabs-vertical{
+    border-bottom: 0 none;
+
+    &.tabs-left{
+        >li{
+            text-align: right;
+            >a,
+            >a:hover,
+            >a:focus{
+                border-color: transparent $brand-primary transparent transparent;
+            }
+            &.active >a,
+            &.active >a:hover,
+            &.active >a:focus {
+                border-color: $brand-primary transparent $brand-primary $brand-primary;
+            }
+        }
+    }
+    &.tabs-right{
+        >li{
+            text-align: left;
+            >a,
+            >a:hover,
+            >a:focus{
+                border-color: transparent transparent transparent $brand-primary;
+            }
+            &.active >a,
+            &.active >a:hover,
+            &.active >a:focus {
+                border-color: $brand-primary $brand-primary $brand-primary transparent;
+            }
+        }
+    }
+    >li{
+        display: block;
+        float: none;
+        margin-bottom: 0;
+
+        >a{
+            transition: .3s ease-in-out;
+            transition-property: border-color, background-color, color, box-shadow, transform;
+        }
+        >a,
+        >a:hover,
+        >a:focus{
+            border-color: transparent $brand-primary transparent transparent;
+        }
+        &.active >a{
+            box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.3);
+            transform: translate(3px, -3px);
+        }
+        &.active >a,
+        &.active >a:hover,
+        &.active >a:focus {
+            border-color: $brand-primary transparent $brand-primary $brand-primary;
+        }
+    }
+}

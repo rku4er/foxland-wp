@@ -54,12 +54,157 @@
 
         //google.maps.event.addDomListener(window, 'load', initMap);
 
-        $(window).load(function(){
-            $('.navbar-fixed-top').css({
-                'margin-top' : $('html').css('margin-top')
+
+        // Avoid page jumping on empty links
+        $('.btn[href="#"]').click(function(e){
+            return false;
+        });
+
+        // WP admin bar fix
+        $('.navbar-fixed-top').css({
+            'margin-top' : $('html').css('margin-top')
+        });
+
+        // Tooltip
+        $('.bs-tooltip').tooltip();
+
+        // Popover
+        $("[data-toggle=popover]")
+          .on('click', function(e) {e.preventDefault(); return true;})
+          .popover();
+
+        // Datepicker
+        $('.datepicker').datepicker({
+            language:   'en',
+            autoclose:  true,
+            format: "yyyymmdd"
+        });
+
+        // Responsive video
+        $('#main').fitVids();
+
+        // Video lightbox
+        $('.video-lightbox').magnificPopup({
+            type: 'iframe'
+        });
+
+        // Image gallery lightbox
+        $('.image-gallery-lightbox').magnificPopup({
+            type:       'image',
+            gallery:    {
+                enabled:    true,
+                tPrev:      '',
+                tNext:      '',
+                tCounter: '%curr% | %total%'
+            }
+        });
+
+        // Price Range
+        if ( $('#price-range').length ) {
+
+            var priceFormat;
+            $('#price-range').noUiSlider({
+
+                start: [ 0, 100000 ],
+                step: 10000,
+                range: {
+                    'min': [  0 ],
+                    'max': [  100000 ]
+                },
+                format: wNumb({
+                    decimals: 0,
+                    thousand: ',',prefix: '$',  }),
+                connect: true,
+
             });
 
+            priceFormat = wNumb({
+                decimals: 0,
+                thousand: ',',prefix: '$',});
+
+            $('#price-range').Link('lower').to($('#price-range-min'));
+            $('#price-range').Link('upper').to($('#price-range-max'));
+
+        }
+
+        // Waves buttons
+        Waves.attach('.btn', ['waves-button', 'waves-light']);
+        Waves.init();
+
+        // Intense images
+        var images = document.querySelectorAll('img');
+        if(images.length){
+          [].forEach.call(images, function(i){
+            if(i.getAttribute('data-run') === 'intense') {
+              new Intense(i);
+            }
+          });
+        }
+
+        // Parallax effect for Bootstrap Carousel
+        $('.carousel-inline[data-type="parallax"] .item').each(function(){
+         // declare the variable to affect the defined data-type
+         var $scroll = $(this);
+         $scroll.data('speed', 5);
+
+          $(window).scroll(function() {
+            // also, negative value because we're scrolling upwards
+            var yPos = -($(window).scrollTop() / $scroll.data('speed'));
+
+            // background position
+            var coords = '50% '+ yPos + 'px';
+
+            // move the background
+            $scroll.css({ backgroundPosition: coords });
+          });
+
+        });
+
+        // Custom Select box
+        $(".form-control").each(function(){
+            $(this).dropdownjs();
+        });
+
+        // Material Checkboxes
+        $('.checkbox > label > input[type=checkbox]').after("<span class=checkbox-material><span class=check></span></span>");
+
+        // Material Toggle buttons
+        $('.togglebutton > label > input[type=checkbox]').after("<span class=toggle></span>");
+
+        // Material Radio buttons
+        $('.radio > label > input[type=radio]').after("<span class=circle></span><span class=check></span>");
+
+
+        // Set .wrap padding-top equal to navbar height
+        var wrapper = function(){
+          return {
+            setOffTop: function(){
+                [].forEach.call(document.querySelectorAll('.navbar-fixed-top'), function(object){
+                   object.nextElementSibling.style.paddingTop = object.clientHeight + 'px';
+                });
+            }
+          };
+        };
+
+        var resizeTimer;
+
+        function resizeFunction() {
+          wrapper().setOffTop();
+        }
+
+        $(window).on('resize', function(e){
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(resizeFunction, 250);
+        });
+
+
+        $(window).load(function(){
+
+            // needed by preloaded
             $('body').addClass('loaded');
+
+            // Controls .wrap offset
+            wrapper().setOffTop();
 
             $('.carousel').each(function() {
                 var $myCarousel = $(this),
@@ -81,69 +226,10 @@
                 });
             });
 
-            $('.bs-tooltip').tooltip();
 
-            $("[data-toggle=popover]")
-              .on('click', function(e) {e.preventDefault(); return true;})
-              .popover();
 
-            new Intense($('img'));
 
-            $('.datepicker').datepicker({
-                language:   'en',
-                autoclose:  true,
-                format: "yyyymmdd"
-            });
 
-            $('select').chosen({
-                width: "100%",
-                search_contains: true,
-                //disable_search: true,
-                disable_search_threshold: 5
-            });
-
-            $('#main').fitVids();
-
-            $('.video-lightbox').magnificPopup({
-                type: 'iframe'
-            });
-
-            $('.image-gallery-lightbox').magnificPopup({
-                type:       'image',
-                gallery:    {
-                    enabled:    true,
-                    tPrev:      '',
-                    tNext:      '',
-                    tCounter: '%curr% | %total%'
-                }
-            });
-
-            if ( $('#price-range').length ) {
-
-                var priceFormat;
-                $('#price-range').noUiSlider({
-
-                    start: [ 0, 100000 ],
-                    step: 10000,
-                    range: {
-                        'min': [  0 ],
-                        'max': [  100000 ]
-                    },
-                    format: wNumb({
-                        decimals: 0,
-                        thousand: ',',prefix: '$',  }),
-                    connect: true,
-
-                });
-
-                priceFormat = wNumb({
-                    decimals: 0,
-                    thousand: ',',prefix: '$',});
-
-                $('#price-range').Link('lower').to($('#price-range-min'));
-                $('#price-range').Link('upper').to($('#price-range-max'));
-
-            }
 
             //// Fire Search Results Ajax On Search Field Change (Exclude Datepicker)
             //$('#price-range, .property-search-form select, .property-search-form input').not('.datepicker').change(function() {

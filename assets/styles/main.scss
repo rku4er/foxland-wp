@@ -8,7 +8,6 @@
 @import "common/_global";
 @import "components/_buttons";
 @import "components/_socials";
-@import "components/_preloader";
 @import "components/_fonts";
 @import "components/_media";
 @import "components/_comments";
@@ -17,6 +16,13 @@
 @import "components/_wp-classes";
 @import "components/_mixins";
 @import "components/_carousel";
+@import "components/_tabs";
+@import "components/_dropdownjs";
+/*@import "components/_nouislider";*/
+@import "components/_selectize";
+@import "components/_snackbarjs";
+@import "components/_checkboxes";
+@import "components/_radios";
 @import "layouts/_header";
 @import "layouts/_sidebar";
 @import "layouts/_footer";

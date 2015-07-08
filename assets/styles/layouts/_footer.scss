@@ -1,0 +1,114 @@
+.content-info{
+    font-size: 12px;
+    color: #ddd;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 0 -6px 12px rgba(0,0,0,0.3);
+
+    &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        bottom: 0;
+        top: 0;
+        position: absolute;
+        background-color: #000;
+        z-index: -1;
+    }
+
+    a{
+        color: #ddd;
+        transition: .3s ease-in-out;
+        transition-property: color, background-color, border-color;
+        text-decoration: none;
+
+        &:hover,
+        &:focus{
+            color: #fff;
+        }
+    }
+
+    .container{
+        padding-top: 20px;
+        padding-bottom: 40px;
+
+        .holder{
+
+            @media (min-width: $screen-md-min){
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+            }
+
+            > section{
+
+                & + section{
+                    margin-top: 1em;
+                    @media (min-width: $screen-md-min){
+                        padding-left: 10px;
+                    }
+                }
+
+                @media (min-width: $screen-md-min){
+                    display: table-cell;
+                    vertical-align: top;
+                    & + section{
+                        margin-top: 0;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .widget{
+        ul{
+            list-style: none;
+            padding-left: 0;
+
+            >li{
+                >a{
+                    display: inline-block;
+                    padding: 5px;
+                }
+
+            }
+        }
+        .menu{
+            margin: 0;
+            display: table;
+            >li{
+                @media (min-width: $screen-sm-min){
+                    float: left;
+                    &+li:before{
+                        content: "| ";
+                        display: inline-block;
+                        font-size: .8em;
+                        vertical-align: middle;
+                    }
+                }
+                .dropdown-menu{
+                    a{
+                         display: block;
+                    }
+                }
+
+            }
+        }
+        .textwidget{
+            padding: 5px;
+        }
+    }
+
+    .socials{
+        a{
+            border-color: #ddd;
+            &:focus,
+            &:hover{
+                color: #000;
+                 border-color: #fff;
+                 background-color: #fff;
+            }
+        }
+    }
+}

@@ -64,12 +64,12 @@ add_action('pre_get_posts', __NAMESPACE__ . '\\search_filter');
 function my_login_logo() { ?>
     <style type="text/css">
         body.login div#login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/dist/images/GT-logo.png);
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/dist/images/foxland-logo.png);
             background-size: contain;
         }
 		.login h1 a {
-			height: 224px !important;
-			width: 326px !important;
+			height: 102px !important;
+			width: 320px !important;
 		}
 		.wp-core-ui .button-primary {
 			background-color: #9ccc3c;
@@ -82,6 +82,7 @@ function my_login_logo() { ?>
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\my_login_logo' );
+
 
 /**
  * Expand wp query
@@ -109,5 +110,14 @@ function set_prop_tax($post_ID){
         $term = get_term_by('slug', 'uncategorized', $type);
         wp_set_object_terms($post_ID, $term->term_id, $type);
     }
+}
+
+/**
+ * Dequeue bootstrap 3 shortcodes scripts
+ */
+add_action( 'the_post', __NAMESPACE__ . '\\dequeue_bootstrap_scripts', 9999 );
+function dequeue_bootstrap_scripts($post_ID){
+    wp_dequeue_script( 'bootstrap-shortcodes-tooltip' );
+    wp_dequeue_script( 'bootstrap-shortcodes-popover' );
 }
 

@@ -5,13 +5,14 @@
 <?php
     $options = Options\get_options();
     $cur_ID = $wp_query->queried_object->ID;
-    $navbar_position = function_exists('get_field') ? get_field('navbar_position', $cur_ID) : 'navbar-static-top';
-    $logo_url = function_exists('get_field') ? get_field('logo', 'options') : '';
+    $navbar_position = function_exists('get_field') ? get_field('navbar_position', $cur_ID) : 'navbar-fixed-top';
+    $logo_url = $options['header_logo'] ? $options['header_logo'] : '';
+    $image = $logo_url ? '<img src="' . esc_url($logo_url) . '" alt="' . get_bloginfo('name') . '">' : '';
     $navbar_brand = sprintf(
         '<a class="%s" href="%s">%s</a>',
         esc_attr('navbar-brand'),
         esc_url(home_url('/')),
-        $logo_url ? '<img src="' . esc_url($logo_url) . '" alt="' . get_bloginfo('name') . '">' : get_bloginfo('name')
+        $logo_url ? $image.'<span class="d-table"><span class="d-cell"><strong>'.get_bloginfo('name').'</strong>'.'<span>'.get_bloginfo('description').'</span></span></span>' : get_bloginfo('name')
     );
     $container_class = $options['header_container'] ? $options['header_container'] : 'container';
 ?>

@@ -1,5 +1,4 @@
 .socials{
-    padding: 10px 0;
     white-space: nowrap;
     display: inline-block;
     text-align: center;
@@ -12,16 +11,21 @@
         }
     }
     a{
-        color: $gray-dark;
-        border-radius: 3px;
+        border: 2px solid $gray;
+        color: $gray;
+        border-radius: 50%;
         display: inline-block;
         position: relative;
         text-align: center;
         transition: all .2s ease;
-        -webkit-animation-duration: 1s;
+        line-height: 1.3em;
+        width: 1.7em;
+        height: 1.7em;
+        padding: inherit;
         animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
+        transition: .3s ease-in-out;
+        transition-property: color, background-color, border-color;
 
         &+a{
             margin-left: 0.5em;
@@ -29,15 +33,15 @@
 
         &:hover,
         &:focus{
-            color: $gray;
-            -webkit-animation-name:rubberBand;
-                    animation-name:rubberBand;
-            -webkit-transform-origin: center;
-                    transform-origin: center
+            color: #fff;
+            border-color: $gray-dark;
+            background-color: $gray-dark;
+            animation-name:rubberBand;
+            transform-origin: center
         }
 
         .fa{
-            transition: all .2s ease;
+            vertical-align: middle;
         }
     }
 }

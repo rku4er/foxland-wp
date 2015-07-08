@@ -1,3 +1,14 @@
+$material-color: #b2957e;
+// Typography elements for Material
+$darkbg-text: rgba(255,255,255,0.84);
+$lightbg-text: rgba(0,0,0,0.84);
+$icon-color: rgba(0,0,0,0.5);
+// Checkboxes
+$checkbox-size: 20px;
+$checkbox-animation-ripple: 500ms;
+$checkbox-animation-check: 0.3s;
+//Radio buttons
+$radio-default: $lightbg-text;
 // preloader index
 $zindex-preloader: 3000;
 
@@ -51,7 +62,7 @@ $link-hover-decoration: underline;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:  Roboto, Helvetica, Arial, sans-serif;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -115,9 +126,9 @@ $padding-xs-horizontal:     5px;
 $line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
 $line-height-small:         1.5;
 
-$border-radius-base:        4px;
-$border-radius-large:       6px;
-$border-radius-small:       3px;
+$border-radius-base:        0;
+$border-radius-large:       0;
+$border-radius-small:       0;
 
 //** Global color for active items (e.g., navs or dropdowns).
 $component-active-color:    #fff;
@@ -142,13 +153,13 @@ $table-condensed-cell-padding:  5px;
 //** Default background color used for all tables.
 $table-bg:                      transparent;
 //** Background color used for `.table-striped`.
-$table-bg-accent:               #f9f9f9;
+$table-bg-accent:               lighten($brand-primary, 35%);
 //** Background color used for `.table-hover`.
-$table-bg-hover:                #f5f5f5;
+$table-bg-hover:                lighten($brand-primary, 25%);
 $table-bg-active:               $table-bg-hover;
 
 //** Border color for table and cell borders.
-$table-border-color:            #ddd;
+$table-border-color:            $brand-primary;
 
 
 //== Buttons
@@ -158,8 +169,8 @@ $table-border-color:            #ddd;
 $btn-font-weight:                normal;
 
 $btn-default-color:              #333;
-$btn-default-bg:                 #fff;
-$btn-default-border:             #ccc;
+$btn-default-bg:                 lighten($brand-primary, 25%);
+$btn-default-border:             $brand-primary;
 
 $btn-primary-color:              #fff;
 $btn-primary-bg:                 $brand-primary;
@@ -242,9 +253,9 @@ $cursor-disabled:                not-allowed;
 //** Background for the dropdown menu.
 $dropdown-bg:                    #fff;
 //** Dropdown menu `border-color`.
-$dropdown-border:                rgba(0,0,0,.15);
+$dropdown-border:                lighten($brand-primary, 25%);
 //** Dropdown menu `border-color` **for IE8**.
-$dropdown-fallback-border:       #ccc;
+$dropdown-fallback-border:       $dropdown-border;
 //** Divider color for between dropdown items.
 $dropdown-divider-bg:            #e5e5e5;
 
@@ -253,7 +264,7 @@ $dropdown-link-color:            $gray-dark;
 //** Hover color for dropdown links.
 $dropdown-link-hover-color:      darken($gray-dark, 5%);
 //** Hover background for dropdown links.
-$dropdown-link-hover-bg:         #f5f5f5;
+$dropdown-link-hover-bg:         lighten($brand-primary, 30%);
 
 //** Active dropdown menu item text color.
 $dropdown-link-active-color:     $component-active-color;
@@ -370,30 +381,30 @@ $navbar-margin-bottom:             $line-height-computed;
 $navbar-border-radius:             $border-radius-base;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2));
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2);
-$navbar-collapse-max-height:       340px;
+$navbar-collapse-max-height:       400px;
 
-$navbar-default-color:             #fff;
+$navbar-default-color:             #eee;
 $navbar-default-bg:                transparent;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%);
 
 // Navbar links
-$navbar-default-link-color:                #fff;
+$navbar-default-link-color:                #eee;
 $navbar-default-link-hover-color:          #fff;
 $navbar-default-link-hover-bg:             transparent;
-$navbar-default-link-active-color:         $gray-dark;
-$navbar-default-link-active-bg:            #fff;
+$navbar-default-link-active-color:         $navbar-default-link-hover-color;
+$navbar-default-link-active-bg:            rgba(255,255,255,0.3);
 $navbar-default-link-disabled-color:       #ccc;
 $navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
 $navbar-default-brand-color:               $navbar-default-link-color;
-$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%);
+$navbar-default-brand-hover-color:         lighten($navbar-default-brand-color, 10%);
 $navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
-$navbar-default-toggle-hover-bg:           #ddd;
-$navbar-default-toggle-icon-bar-bg:        #888;
-$navbar-default-toggle-border-color:       #ddd;
+$navbar-default-toggle-hover-bg:           transparent;
+$navbar-default-toggle-icon-bar-bg:        #eee;
+$navbar-default-toggle-border-color:       transparent;
 
 
 // Inverted navbar
@@ -428,21 +439,21 @@ $navbar-inverse-toggle-border-color:        #333;
 
 //=== Shared nav styles
 $nav-link-padding:                          10px 15px;
-$nav-link-hover-bg:                         $gray-lighter;
+$nav-link-hover-bg:                         lighten($brand-primary, 30%);
 
 $nav-disabled-link-color:                   $gray-light;
 $nav-disabled-link-hover-color:             $gray-light;
 
 //== Tabs
-$nav-tabs-border-color:                     #ddd;
+$nav-tabs-border-color:                     $brand-primary;
 
-$nav-tabs-link-hover-border-color:          $gray-lighter;
+$nav-tabs-link-hover-border-color:          $brand-primary;
 
 $nav-tabs-active-link-hover-bg:             $body-bg;
 $nav-tabs-active-link-hover-color:          $gray;
-$nav-tabs-active-link-hover-border-color:   #ddd;
+$nav-tabs-active-link-hover-border-color:   $brand-primary;
 
-$nav-tabs-justified-link-border-color:            #ddd;
+$nav-tabs-justified-link-border-color:            $brand-primary;
 $nav-tabs-justified-active-link-border-color:     $body-bg;
 
 //== Pills
@@ -457,12 +468,11 @@ $nav-pills-active-link-hover-color:         $component-active-color;
 
 $pagination-color:                     $link-color;
 $pagination-bg:                        #fff;
-$pagination-border:                    #ddd;
+$pagination-border:                    $brand-primary;
 
 $pagination-hover-color:               $link-hover-color;
 $pagination-hover-bg:                  $gray-lighter;
-$pagination-hover-border:              #ddd;
-
+$pagination-hover-border:              $brand-primary;
 $pagination-active-color:              #fff;
 $pagination-active-bg:                 $brand-primary;
 $pagination-active-border:             $brand-primary;
@@ -547,12 +557,12 @@ $popover-bg:                          #fff;
 //** Popover maximum width
 $popover-max-width:                   276px;
 //** Popover border color
-$popover-border-color:                rgba(0,0,0,.2);
+$popover-border-color:                $brand-primary;
 //** Popover fallback border color
-$popover-fallback-border-color:       #ccc;
+$popover-fallback-border-color:       $brand-primary;
 
 //** Popover title background color
-$popover-title-bg:                    darken($popover-bg, 3%);
+$popover-title-bg:                    lighten($brand-primary, 35%);
 
 //** Popover arrow width
 $popover-arrow-width:                 10px;
@@ -678,7 +688,8 @@ $progress-bar-info-bg:        $brand-info;
 //** Background color on `.list-group-item`
 $list-group-bg:                 #fff;
 //** `.list-group-item` border color
-$list-group-border:             #ddd;
+$list-group-border:             $brand-primary;
+;
 //** List group border radius
 $list-group-border-radius:      $border-radius-base;
 
@@ -716,12 +727,12 @@ $panel-footer-padding:        $panel-heading-padding;
 $panel-border-radius:         $border-radius-base;
 
 //** Border color for elements within panels
-$panel-inner-border:          #ddd;
-$panel-footer-bg:             #f5f5f5;
+$panel-inner-border:          $brand-primary;
+$panel-footer-bg:             transparent;
 
 $panel-default-text:          $gray-dark;
-$panel-default-border:        #ddd;
-$panel-default-heading-bg:    #f5f5f5;
+$panel-default-border:        $brand-primary;
+$panel-default-heading-bg:    lighten($brand-primary, 35%);
 
 $panel-primary-text:          #fff;
 $panel-primary-border:        $brand-primary;
@@ -753,7 +764,7 @@ $thumbnail-padding:           4px;
 //** Thumbnail background color
 $thumbnail-bg:                $body-bg;
 //** Thumbnail border color
-$thumbnail-border:            #ddd;
+$thumbnail-border:            lighten($brand-primary, 15%);
 //** Thumbnail border radius
 $thumbnail-border-radius:     $border-radius-base;
 

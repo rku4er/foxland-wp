@@ -1,7 +1,24 @@
 .navbar-collapse .socials{
     float: right;
+    line-height: $navbar-height;
+
+    a{
+        color: $navbar-default-link-color;
+        border-color: $navbar-default-link-color;
+        &:hover,
+        &:focus{
+            color: $brand-primary;
+            background-color: $navbar-default-link-hover-color;
+            border-color: $navbar-default-link-hover-color;
+        }
+    }
 }
 .navbar-default{
+    border-width: 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    padding-top: $navbar-padding-vertical;
+    padding-bottom: $navbar-padding-vertical;
+
     &:before{
         content: "";
         display: block;
@@ -15,18 +32,99 @@
         opacity: .9;
         z-index: -1;
     }
-    .navbar-nav > li > a{
-        transition: all .2s ease-in-out;
-        &:hover,
-        &:focus{
-            -webkit-animation-duration: 1s;
-            animation-duration: 1s;
-            -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-            -webkit-animation-name: pulse;
-            animation-name: pulse;
-            -webkit-transform-origin: center bottom;
-            transform-origin: center bottom;
+    .navbar-nav{
+        >li{
+            &.open >a,
+            &.open >a:hover,
+            &.open >a:focus {
+                background-color: transparent;
+            }
+            &.open >a,
+            >a:hover,
+            >a:focus{
+                &:before{
+                    border-color: #fff;
+                    width: 100%;
+                    left: 0;
+                }
+            }
+
+            >a{
+                position: relative;
+
+                 &:before{
+                     content: "";
+                     display: block;
+                     position: absolute;
+                     top: 0;
+                     left: 50%;
+                     width: 0;
+                     height: 0;
+                     overflow: hidden;
+                     border-top: 2px solid transparent;
+                     transition: .3s ease-in-out;
+                     transition-property: border-color, width, left;
+                 }
+            }
         }
     }
+    .dropdown-menu{
+        border-width: 0 1px 1px;
+    }
+    .navbar-brand{
+        line-height: 1;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: $navbar-height;
+        line-height: auto;
+
+        @media (min-width: $screen-sm-min){
+            margin-right: 1em;
+        }
+
+        &:hover,
+        &:focus{
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-name: pulse;
+            transform-origin: center bottom;
+        }
+
+        .d-table{
+            float: left;
+            display: table;
+            height: 100%;
+
+            .d-cell{
+                display: table-cell;
+                vertical-align: middle;
+
+                span{
+                    display: block;
+                    font-size: 0.5em;
+                    text-align: center;
+                    &:before{
+                        content: "";
+                        display: block;
+                        margin: 0 auto;
+                        width: 50%;
+                        height: 0;
+                        border: solid #fff;
+                        border-width: 1px 0 0;
+                        margin-bottom: 0.3em;
+                        box-shadow: 0 1px 3px rgba(255,255,255,1);
+                    }
+                }
+            }
+        }
+        
+        img{
+             max-height: 100%;
+             float: left;
+             margin-right: 0.5em;
+        }
+
+        
+    }
 }
+

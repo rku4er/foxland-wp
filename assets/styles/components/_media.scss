@@ -20,14 +20,10 @@
         }
     }
 }
-.content{
-    img,
-    iframe{
-        max-width: 100%;
-    }
-    iframe{
-      width: 400px;
-      height: 300px;
-      margin: 0 0 15px;
-    }
+img,
+iframe{
+    max-width: 100%;
+}
+.img-thumbnail{
+    box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.3);
 }

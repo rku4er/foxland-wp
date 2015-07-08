@@ -1,5 +1,7 @@
 .carousel{
-    margin-bottom: $line-height-computed;
+    margin-bottom: $navbar-height;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+
     &.carousel-fade {
         .item {
             opacity: 0;
@@ -33,18 +35,8 @@
             height: 100%;
         }
         .item {
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            background-size: cover;
-            background-position: 50% 50%;
             height: 100%;
             width: 100%;
-            -webkit-transition-duration: 2s;
-            -moz-transition-duration: 2s;
-            transition-duration: 2s;
-            >img {
-                display: none;
-            }
         }
         .carousel-caption {
             display: table;
@@ -59,21 +51,32 @@
                 font-size: 36px;
                 font-weight: 400;
                 text-transform: uppercase;
-                -webkit-animation-duration: 2s;
-                -moz-animation-duration: 2s;
                 animation-duration: 2s;
-                -webkit-animation-delay: 0.5s;
-                -moz-animation-delay: 0.5s;
                 animation-delay: 0.5s;
             }
             p {
                 font-size: 20px;
-                -webkit-animation-duration: 2s;
-                -moz-animation-duration: 2s;
                 animation-duration: 2s;
-                -webkit-animation-delay: 1.5s;
-                -moz-animation-delay: 1.5s;
                 animation-delay: 1.5s;
+            }
+        }
+    }
+    &.carousel-inline{
+        .item{
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+
+            >a,
+            img{
+                position: relative;
+                z-index: 11;
+            }
+
+            img{
+                opacity: 0;
+                display: block;
+                margin: 0 auto;
             }
         }
     }
@@ -83,11 +86,10 @@
     }
     .carousel-caption{
         position: absolute;
-        left: 10%;
-        right: 10%;
+        left: 0;
+        right: 0;
         top: 10%;
         bottom: 10%;
-        padding: 0;
 
         >div {
             display: table;
@@ -143,5 +145,10 @@
                 }
             }
         } 
+
+        .slide-caption p{
+            max-width: 50%;
+            display: inline-block;
+        }
     }
 }

@@ -120,13 +120,22 @@ h6 {
     font-weight: {$options['navbar_brand_font-weight']};
 }
 .thumb-title,
-.dropdown-menu,
-.navbar-default .navbar-nav {
+.navbar-default .navbar-nav,
+.navbar-default .navbar-nav .dropdown-menu {
     font-family: {$options['menu_font-family']['font']};
     font-size: {$options['menu_font-size']};
     font-weight: {$options['menu_font-weight']};
     text-transform: {$options['menu_text-transform']};
 }
+.carousel-inline .carousel-caption .slide-title{
+    font-family: {$options['slide_title_font-family']['font']};
+    font-size: {$options['slide_title_font-size']};
+}
+.carousel-inline .carousel-caption .slide-caption{
+    font-family: {$options['slide_caption_font-family']['font']};
+    font-size: {$options['slide_caption_font-size']};
+}
+
 /* Custom CSS */
 {$custom_css}
   ";
