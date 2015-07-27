@@ -64,7 +64,7 @@ add_action('pre_get_posts', __NAMESPACE__ . '\\search_filter');
 function my_login_logo() { ?>
     <style type="text/css">
         body.login div#login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/dist/images/foxland-logo.png);
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/dist/images/backend-logo.png);
             background-size: contain;
         }
 		.login h1 a {
@@ -120,4 +120,3 @@ function dequeue_bootstrap_scripts($post_ID){
     wp_dequeue_script( 'bootstrap-shortcodes-tooltip' );
     wp_dequeue_script( 'bootstrap-shortcodes-popover' );
 }
-

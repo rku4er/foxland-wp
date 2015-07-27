@@ -19,7 +19,9 @@
     "intense-images": "~1.0.0",
     "magnific-popup": "~1.0.0",
     "bootstrap-datepicker": "~1.4.0",
-    "dropdown.js": "*"
+    "dropdown.js": "*",
+    "nouislider": "~8.0.2",
+    "fastclick": "~1.0.6"
   },
   "overrides": {
     "modernizr": {

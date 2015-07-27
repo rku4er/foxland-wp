@@ -9,11 +9,57 @@
         }
     }
     .thumb-wrapper{
+        text-align: center;
         .thumbnail{
             padding: 0;
             border: 0 none;
             border-radius: 0;
             margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+            transition: .3s ease-in-out;
+            transition-property: box-shadow, transform;
+
+            &:before,
+            &:after{
+                content: "";
+                display: block;
+                position: absolute;
+                transition: opacity .3s ease-in-out;
+            }
+
+            &:before{
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+                background-color: #fff;
+            }
+            &:after{
+                content: "";
+                top: 50%;
+                left: 50%;
+                font-family: "Glyphicons Halflings";
+                font-size: 40px;
+                line-height: 1;
+                margin: -0.4em 0 0 -0.45em;
+                opacity: 0;
+                text-rendering: auto;
+                animation-duration: .75s;
+            }
+            &:hover,
+            &:focus{
+                transform: translate3d(0,-2px,0) scale3d(1.005,1.005,1);
+
+                &:before{
+                    opacity: 0.7;
+                }
+                &:after{
+                    opacity: 1;
+                    animation-name: fadeInDown;
+                }
+            }
         }
         .thumb-title{
             font-size: $font-size-large;
@@ -24,6 +70,21 @@ img,
 iframe{
     max-width: 100%;
 }
+img[class*="img-"],
 .img-thumbnail{
-    box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: .3s ease-in-out;
+    transition-property: box-shadow, border-color, transform;
+    border-width: 2px;
+
+}
+a img[class*="img-"],
+a .img-thumbnail{
+    &:hover,
+    &:focus{
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        border-color: $brand-primary;
+        transform: translate3d(0,-2px,0) scale3d(1.005,1.005,1);
+    }
+
 }

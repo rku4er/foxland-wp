@@ -24,7 +24,6 @@
         var windowHeight = $(window).height();
         var windowWidth = $(window).width();
 
-
         //var map = null, markers = [], newMarkers = [], markerCluster = null, bounds = [], infobox = [];
 
             //var customIcon = new google.maps.MarkerImage(
@@ -57,8 +56,11 @@
 
         // Avoid page jumping on empty links
         $('.btn[href="#"]').click(function(e){
-            return false;
+            e.preventDefault();
         });
+
+        // Disable 300ms click delay on mobile
+        FastClick.attach(document.body);
 
         // WP admin bar fix
         $('.navbar-fixed-top').css({
@@ -69,7 +71,7 @@
         $('.bs-tooltip').tooltip();
 
         // Popover
-        $("[data-toggle=popover]")
+        $(".bs-popover")
           .on('click', function(e) {e.preventDefault(); return true;})
           .popover();
 
@@ -77,7 +79,7 @@
         $('.datepicker').datepicker({
             language:   'en',
             autoclose:  true,
-            format: "yyyymmdd"
+            format: "yyyy-mm-dd"
         });
 
         // Responsive video
@@ -89,47 +91,59 @@
         });
 
         // Image gallery lightbox
-        $('.image-gallery-lightbox').magnificPopup({
-            type:       'image',
-            gallery:    {
-                enabled:    true,
-                tPrev:      '',
-                tNext:      '',
-                tCounter: '%curr% | %total%'
-            }
+        $('.gallery-row').each(function(){
+            $(this).find('a').magnificPopup({
+                type:       'image',
+                enableEscapeKey: true,
+                gallery:    {
+                    enabled:    true,
+                    tPrev:      '',
+                    tNext:      '',
+                    tCounter: '%curr% | %total%'
+                },
+                mainClass: 'mfp-with-zoom',
+                zoom: {
+                  enabled: true,
+                  duration: 300,
+                  easing: 'ease-in-out',
+                }
+            });
         });
 
         // Price Range
-        if ( $('#price-range').length ) {
+        [].forEach.call(document.querySelectorAll('.nouislider'), function(obj){
+            var slider = $('<div/>');
+            $(obj).hide().after(slider);
 
-            var priceFormat;
-            $('#price-range').noUiSlider({
-
-                start: [ 0, 100000 ],
-                step: 10000,
-                range: {
-                    'min': [  0 ],
-                    'max': [  100000 ]
-                },
-                format: wNumb({
-                    decimals: 0,
-                    thousand: ',',prefix: '$',  }),
+            noUiSlider.create(slider[0], {
+                start: [ 0, 100 ],
+                step: 1,
                 connect: true,
-
+                range: {
+                    'min': [ 0 ],
+                    'max': [ 100 ]
+                }
             });
+        });
 
-            priceFormat = wNumb({
-                decimals: 0,
-                thousand: ',',prefix: '$',});
 
-            $('#price-range').Link('lower').to($('#price-range-min'));
-            $('#price-range').Link('upper').to($('#price-range-max'));
+        var ripples = [
+          ".carousel-control",
+          ".btn:not(.btn-link)",
+          ".card-image",
+          ".navbar a:not(.withoutripple)",
+          ".dropdown-menu a",
+          ".nav-tabs a:not(.withoutripple)",
+          ".withripple",
+          ".pagination li:not(.active, .disabled) a:not(.withoutripple)"
+        ].join(",");
 
-        }
+        $(ripples).ripples();
 
         // Waves buttons
-        Waves.attach('.btn', ['waves-button', 'waves-light']);
-        Waves.init();
+        //Waves.attach('.btn', ['waves-button', 'waves-light']);
+        //Waves.attach('.nav-tabs >li >a', ['waves-button']);
+        //Waves.init();
 
         // Intense images
         var images = document.querySelectorAll('img');
@@ -206,7 +220,7 @@
             // Controls .wrap offset
             wrapper().setOffTop();
 
-            $('.carousel').each(function() {
+            $('.carousel-inline').each(function() {
                 var $myCarousel = $(this),
                     $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
 
@@ -217,7 +231,7 @@
                 doAnimations($firstAnimatingElems);
 
                 //Pause carousel
-                $myCarousel.carousel('pause');
+                //$myCarousel.carousel('pause');
 
                 //Other slides to be animated on carousel slide event
                 $myCarousel.on('slide.bs.carousel', function(e) {
@@ -225,11 +239,6 @@
                     doAnimations($animatingElems);
                 });
             });
-
-
-
-
-
 
             //// Fire Search Results Ajax On Search Field Change (Exclude Datepicker)
             //$('#price-range, .property-search-form select, .property-search-form input').not('.datepicker').change(function() {

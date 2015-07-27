@@ -130,6 +130,7 @@ h6 {
 .carousel-inline .carousel-caption .slide-title{
     font-family: {$options['slide_title_font-family']['font']};
     font-size: {$options['slide_title_font-size']};
+    text-transform: {$options['slide_title_text-transform']};
 }
 .carousel-inline .carousel-caption .slide-caption{
     font-family: {$options['slide_caption_font-family']['font']};

@@ -1,0 +1,24 @@
+.btn{
+    transition: .3s ease-in-out;
+    transition-property: color, background-color, border-color;
+    border: 0 none;
+    position: relative;
+
+    &:not(.btn-default).waves-button, 
+    &:not(.btn-default).waves-button-input, 
+    &:not(.btn-default).waves-button:hover, 
+    &:not(.btn-default).waves-button:visited{
+        color: #fff;
+    }
+
+    &.btn-default{
+        color: $brand-primary;
+        border: 2px solid $brand-primary;
+
+        &:hover,
+        &:focus{
+            color: #fff;
+            background-color: $brand-primary;
+        }
+    }
+}

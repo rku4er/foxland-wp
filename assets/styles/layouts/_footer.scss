@@ -3,7 +3,7 @@
     color: #ddd;
     font-weight: bold;
     position: relative;
-    box-shadow: 0 -6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
 
     &:before {
         content: "";
@@ -12,8 +12,12 @@
         bottom: 0;
         top: 0;
         position: absolute;
-        background-color: #000;
+        background-color: darken($brand-primary, 50%);
         z-index: -1;
+    }
+
+    h1,h2,h3,h4,h5,h6{
+        color: #fff;
     }
 
     a{

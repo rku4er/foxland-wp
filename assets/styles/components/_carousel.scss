@@ -1,6 +1,6 @@
 .carousel{
     margin-bottom: $navbar-height;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 
     &.carousel-fade {
         .item {
@@ -90,6 +90,10 @@
         right: 0;
         top: 10%;
         bottom: 10%;
+        padding: 0 50px;
+        @media (min-width: $screen-sm-min){
+            bottom: 20%;
+        }
 
         >div {
             display: table;
@@ -146,9 +150,35 @@
             }
         } 
 
-        .slide-caption p{
-            max-width: 50%;
-            display: inline-block;
+        .slide-title{
+            @media (min-width: $screen-sm-min){
+                margin-bottom: 0.5em;
+            }
+        }
+        .slide-caption{
+            line-height: 1.1;
+
+            p{
+                display: inline-block;
+                @media (min-width: $screen-md-min){
+                    max-width: 60%;
+                }
+            }
+        }
+    }
+}
+.carousel-indicators{
+    li{
+        transition: transform .2s ease-in-out;
+        &,
+        &:hover,
+        &.active{
+            margin: 3px;
+            width: 16px;
+            height: 16px;
+        }
+        &.active{
+             transform: scale3d(1.2, 1.2, 1);
         }
     }
 }

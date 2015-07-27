@@ -1,58 +1,81 @@
-.tabs-vertical{
+.nav-tabs{
     border-bottom: 0 none;
-
-    &.tabs-left{
-        >li{
-            text-align: right;
-            >a,
-            >a:hover,
-            >a:focus{
-                border-color: transparent $brand-primary transparent transparent;
-            }
-            &.active >a,
-            &.active >a:hover,
-            &.active >a:focus {
-                border-color: $brand-primary transparent $brand-primary $brand-primary;
-            }
-        }
-    }
-    &.tabs-right{
-        >li{
-            text-align: left;
-            >a,
-            >a:hover,
-            >a:focus{
-                border-color: transparent transparent transparent $brand-primary;
-            }
-            &.active >a,
-            &.active >a:hover,
-            &.active >a:focus {
-                border-color: $brand-primary $brand-primary $brand-primary transparent;
-            }
-        }
-    }
     >li{
-        display: block;
-        float: none;
         margin-bottom: 0;
-
         >a{
-            transition: .3s ease-in-out;
-            transition-property: border-color, background-color, color, box-shadow, transform;
-        }
-        >a,
-        >a:hover,
-        >a:focus{
-            border-color: transparent $brand-primary transparent transparent;
-        }
-        &.active >a{
-            box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.3);
-            transform: translate(3px, -3px);
+            border-radius: 0;
+            transition: .2s ease-in-out;
+            transition-property: border, background-color, color, box-shadow, transform;
+            margin: 0;
+            border-style: solid;
+
+            &,
+            &:hover,
+            &:focus{
+                border-width: 0 0 2px;
+                color: $brand-primary;
+            }
         }
         &.active >a,
         &.active >a:hover,
-        &.active >a:focus {
-            border-color: $brand-primary transparent $brand-primary $brand-primary;
+        &.active >a:focus{
+            border-width: 0 0 2px;
+            border-color: lighten($brand-primary, 10%);
+        }
+        &.active >a{
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transform: translate(0, -2px);
+        }
+    }
+    &.tabs-vertical{
+        border-bottom: 0 none;
+
+        &.tabs-left{
+            >li{
+                text-align: right;
+                >a,
+                >a:hover,
+                >a:focus{
+                    border-width: 0 2px 0 0;
+                    border-right-color: lighten($brand-primary, 20%);
+                }
+            }
+        }
+        &.tabs-right{
+            >li{
+                text-align: left;
+                >a,
+                >a:hover,
+                >a:focus{
+                    border-width: 0 0 0 2px;
+                    border-left-color: lighten($brand-primary, 20%);
+                }
+            }
+        }
+        >li{
+            float: none;
+            text-align: right;
+
+            >a{
+                transition: .2s ease-in-out;
+                transition-property: border, background-color, color, box-shadow, transform;
+
+                &,
+                &:hover,
+                &:focus{
+                    border-width: 0 2px 0 0;
+                    border-right-color: lighten($brand-primary, 20%);
+                }
+            }
+            &.active >a{
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                transform: translate(0, -2px);
+            } 
+            &.active >a,
+            &.active >a:hover,
+            &.active >a:focus{
+                border-width: 0;
+            }
         }
     }
 }

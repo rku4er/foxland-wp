@@ -28,6 +28,7 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
   add_image_size('slider', 1880, 740, true);
+  update_option( 'medium_crop', 1 );
 
   // Add post formats
   // http://codex.wordpress.org/Post_Formats

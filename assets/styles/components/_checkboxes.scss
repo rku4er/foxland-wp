@@ -1,15 +1,7 @@
 .form-horizontal .checkbox {
   padding-top: 20px;
 }
-.checkbox {
-  transform: translateZ(0); // Force 3d rendering
-  label {
-    cursor: pointer;
-    padding-left: 0; // Reset for Bootstrap rule
-  }
-
-  // Hide native checkbox
-  input[type=checkbox] {
+body:not(.mce-content-body) .checkbox input[type=checkbox]{
     opacity: 0;
     position: absolute;
     margin: 0;
@@ -19,12 +11,60 @@
     overflow: hidden;
     left: 0;
     pointer-events: none;
+}
+.checkbox {
+  transform: translateZ(0); // Force 3d rendering
+  label {
+    cursor: pointer;
+    padding-left: 25px;
   }
 
+  input[type=checkbox]:focus + .checkbox-material .check:after {
+    opacity: 0.2;
+  }
+  input[type=checkbox]:checked + .checkbox-material .check:before {
+    box-shadow:
+      0 0 0 10px,
+      10px -10px 0 10px,
+      32px 0px 0 20px,
+      0px 32px 0 20px,
+      -5px 5px 0 10px,
+      20px -12px 0 11px;
+    animation: checkbox-on $checkbox-animation-check forwards;
+  }
+
+  input[type=checkbox]:not(:checked) + .checkbox-material:before {
+    animation: rippleOff $checkbox-animation-ripple;
+  }
+  input[type=checkbox]:checked + .checkbox-material:before {
+    animation: rippleOn $checkbox-animation-ripple;
+  }
+
+  input[type=checkbox]:not(:checked) + .checkbox-material .check:after {
+    animation: rippleOff $checkbox-animation-ripple forwards;
+  }
+  input[type=checkbox]:checked + .checkbox-material .check:after {
+    animation: rippleOn $checkbox-animation-ripple forwards;
+  }
+
+  input[type=checkbox][disabled]:not(:checked) ~ .checkbox-material .check:before,
+  input[type=checkbox][disabled] + .circle {
+    opacity: 0.5;
+  }
+  input[type=checkbox][disabled] + .checkbox-material .check:after {
+    background-color: $gray-lighter;
+    transform: rotate(-45deg);
+  }
+
+  @include variations("input[type=checkbox]:checked + .checkbox-material .check:after", background-color);
+  @include variations("input[type=checkbox]:checked + .checkbox-material .check:before", color);
+  @include variations("input[type=checkbox]:checked + .checkbox-material .check", color);
+
   .checkbox-material {
-    vertical-align: middle;
-    position: relative;
-    top: 3px;
+    vertical-align: top;
+    position: absolute;
+    top: 0;
+    left: 0;
     &:before {
       display: block;
       position: absolute;
@@ -71,48 +111,6 @@
     }
   }
 
-  input[type=checkbox]:focus + .checkbox-material .check:after {
-    opacity: 0.2;
-  }
-  input[type=checkbox]:checked + .checkbox-material .check:before {
-    box-shadow:
-      0 0 0 10px,
-      10px -10px 0 10px,
-      32px 0px 0 20px,
-      0px 32px 0 20px,
-      -5px 5px 0 10px,
-      20px -12px 0 11px;
-    animation: checkbox-on $checkbox-animation-check forwards;
-  }
-
-  input[type=checkbox]:not(:checked) + .checkbox-material:before {
-    animation: rippleOff $checkbox-animation-ripple;
-  }
-  input[type=checkbox]:checked + .checkbox-material:before {
-    animation: rippleOn $checkbox-animation-ripple;
-  }
-
-  // Ripple effect on click
-  input[type=checkbox]:not(:checked) + .checkbox-material .check:after {
-    animation: rippleOff $checkbox-animation-ripple forwards;
-  }
-  input[type=checkbox]:checked + .checkbox-material .check:after {
-    animation: rippleOn $checkbox-animation-ripple forwards;
-  }
-
-  // Style for disabled inputs
-  input[type=checkbox][disabled]:not(:checked) ~ .checkbox-material .check:before,
-  input[type=checkbox][disabled] + .circle {
-    opacity: 0.5;
-  }
-  input[type=checkbox][disabled] + .checkbox-material .check:after {
-    background-color: $gray-lighter;
-    transform: rotate(-45deg);
-  }
-
-  @include variations(" input[type=checkbox]:checked + .checkbox-material .check:after", background-color, $brand-success);
-  @include variations(" input[type=checkbox]:checked + .checkbox-material .check:before", color, #4caf50);
-  @include variations(" input[type=checkbox]:checked + .checkbox-material .check", color, #4caf50);
 }
 
 

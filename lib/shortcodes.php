@@ -92,8 +92,8 @@ function slider_init( $attr ){
                                 . $slide['title_animation'] : '';
                             $title_style = '
                                 color: '. $slide['title_color'] .';
-                                animation-delay: '. $slide['title_animation_delay'] .';
-                                animation-duration: '. $slide['title_animation_duration'] .';
+                                animation-delay: '. $slide['title_animation_delay'] .'s;
+                                animation-duration: '. $slide['title_animation_duration'] .'s;
                             ';
                             $title_html = '<h3 class="slide-title" data-animation="'. $anim_title .'" style="'
                                 . $title_style .'">'
@@ -105,10 +105,10 @@ function slider_init( $attr ){
                                 . $slide['caption_animation'] : '';
                             $caption_style = '
                                 color: '. $slide['caption_color'] .';
-                                animation-delay: '. $slide['caption_animation_delay'] .';
-                                animation-duration: '. $slide['caption_animation_duration'] .';
+                                animation-delay: '. $slide['caption_animation_delay'] .'s;
+                                animation-duration: '. $slide['caption_animation_duration'] .'s;
                             ';
-                            $caption_html = '<div class="slide-caption" data-animation="'. $anim_caption .'" style="'
+                            $caption_html = '<div class="slide-caption hidden-xs" data-animation="'. $anim_caption .'" style="'
                                 . $caption_style .'"><p>'
                                 . $slide['caption_text'] . '</p></div>';
                         }
@@ -148,7 +148,7 @@ function slider_init( $attr ){
                       ( $interval )   ? sprintf( ' data-interval="%d"', $interval ) : '',
                       ( $pause )      ? sprintf( ' data-pause="%s"', esc_attr( $pause ) ) : '',
                       ( $wrap )       ? sprintf( ' data-wrap="%s"', esc_attr( $wrap ) ) : '',
-                      ( $bullets ) ? '<ol class="carousel-indicators">' . implode( $indicators ) . '</ol>' : '',
+                      ( $bullets ) ? '<ol class="carousel-indicators hidden-xs">' . implode( $indicators ) . '</ol>' : '',
                       esc_attr( $inner_class ),
                       implode($items),
                       ( $arrows ) ? sprintf( '%s%s',
@@ -278,7 +278,7 @@ function bs_tabs_vertical( $atts, $content = null ) {
     }
   }
   return sprintf(
-    '<div class="col-xs-3"><ul class="%s" id="%s"%s>%s</ul></div><div class="col-xs-9"><div class="%s">%s</div></div>',
+    '<div class="col-sm-3"><ul class="%s" id="%s"%s>%s</ul></div><div class="col-sm-9"><div class="%s">%s</div></div>',
     esc_attr( $ul_class ),
     esc_attr( $id ),
     ( $data_props ) ? ' ' . $data_props : '',

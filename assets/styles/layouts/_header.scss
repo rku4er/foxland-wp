@@ -15,9 +15,13 @@
 }
 .navbar-default{
     border-width: 0;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-    padding-top: $navbar-padding-vertical;
-    padding-bottom: $navbar-padding-vertical;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    padding: 0;
+
+    .navbar-header{
+        padding-top: $navbar-padding-vertical;
+        padding-bottom: $navbar-padding-vertical;
+    }
 
     &:before{
         content: "";
@@ -31,6 +35,12 @@
         background-color: $brand-primary;
         opacity: .9;
         z-index: -1;
+    }
+    .socials,
+    .navbar-nav{
+        @media (min-width: $screen-sm-min){
+            margin-top: $navbar-padding-vertical;
+        }
     }
     .navbar-nav{
         >li{
@@ -51,6 +61,7 @@
 
             >a{
                 position: relative;
+                text-shadow: -1px 1px 1px rgba(0,0,0,0.2);
 
                  &:before{
                      content: "";
@@ -67,9 +78,6 @@
                  }
             }
         }
-    }
-    .dropdown-menu{
-        border-width: 0 1px 1px;
     }
     .navbar-brand{
         line-height: 1;
@@ -125,6 +133,28 @@
         }
 
         
+    }
+
+    .navbar-toggle{
+        position: absolute; 
+        top: 0;
+        right: 0;
+        margin-top: 20px;
+        border-radius: 100%;
+    }
+}
+.dropdown-menu{
+    border-width: 0 1px 1px;
+    padding: 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    border: 0 none;
+    >li{
+        >a{
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            transition: .2s ease-in-out;
+            transition-property: background-color, color;
+        }
     }
 }
 
