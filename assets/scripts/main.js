@@ -19,10 +19,12 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
-        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent
-        );
-        var windowHeight = $(window).height();
-        var windowWidth = $(window).width();
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        // Avoid page jumping on empty links
+        //$('.btn[href="#"]').click(function(e){
+            //e.preventDefault();
+        //});
 
         //var map = null, markers = [], newMarkers = [], markerCluster = null, bounds = [], infobox = [];
 
@@ -53,19 +55,34 @@
 
         //google.maps.event.addDomListener(window, 'load', initMap);
 
+        // ADD SLIDEDOWN ANIMATION TO DROPDOWN //
+        $('.dropdown').on('show.bs.dropdown', function(e){
+            $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+        });
 
-        // Avoid page jumping on empty links
-        $('.btn[href="#"]').click(function(e){
+        // ADD SLIDEUP ANIMATION TO DROPDOWN //
+        $('.dropdown').on('hide.bs.dropdown', function(e){
             e.preventDefault();
+            $(this).find('.dropdown-menu').first().stop(true, true).slideUp(400, function(){
+                //On Complete, we reset all active dropdown classes and attributes
+                //This fixes the visual bug associated with the open class being removed too fast
+                $('.dropdown').removeClass('open');
+                $('.dropdown').find('.dropdown-toggle').attr('aria-expanded','false');
+            });
         });
 
         // Disable 300ms click delay on mobile
         FastClick.attach(document.body);
 
         // WP admin bar fix
-        $('.navbar-fixed-top').css({
-            'margin-top' : $('html').css('margin-top')
-        });
+        (function(adminbar){
+            if(document.getElementById(adminbar).length){
+                $('.navbar-fixed-top').css({
+                    'margin-top' : $(adminbar).height()
+                });
+            }
+        })('wpadminbar');
+
 
         // Tooltip
         $('.bs-tooltip').tooltip();
@@ -91,8 +108,9 @@
         });
 
         // Image gallery lightbox
-        $('.gallery-row').each(function(){
-            $(this).find('a').magnificPopup({
+        $('.gallery').each(function(){
+            $(this).find('a.thumbnail')
+            .magnificPopup({
                 type:       'image',
                 enableEscapeKey: true,
                 gallery:    {
@@ -155,6 +173,10 @@
           });
         }
 
+        $("input[type=file]").fileinput({
+            uploadExtraData: {kvId: '10'},
+        });
+
         // Parallax effect for Bootstrap Carousel
         $('.carousel-inline[data-type="parallax"] .item').each(function(){
          // declare the variable to affect the defined data-type
@@ -209,6 +231,11 @@
         $(window).on('resize', function(e){
           clearTimeout(resizeTimer);
           resizeTimer = setTimeout(resizeFunction, 250);
+          if(adminbar.length){
+              $('.navbar-fixed-top').css({
+                  'margin-top' : adminbar.height()
+              });
+          }
         });
 
 

@@ -12,19 +12,20 @@
             &,
             &:hover,
             &:focus{
-                border-width: 0 0 2px;
+                border-width: 0 0 1px;
+                border-bottom-color: transparent;
                 color: $brand-primary;
             }
         }
         &.active >a,
         &.active >a:hover,
         &.active >a:focus{
-            border-width: 0 0 2px;
+            border-width: 0 0 1px;
             border-color: lighten($brand-primary, 10%);
         }
         &.active >a{
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            transform: translate(0, -2px);
+            transform: translate3d(0, -1px, 0);
         }
     }
     &.tabs-vertical{
@@ -36,7 +37,7 @@
                 >a,
                 >a:hover,
                 >a:focus{
-                    border-width: 0 2px 0 0;
+                    border-width: 0 1px 0 0;
                     border-right-color: lighten($brand-primary, 20%);
                 }
             }
@@ -47,7 +48,7 @@
                 >a,
                 >a:hover,
                 >a:focus{
-                    border-width: 0 0 0 2px;
+                    border-width: 0 0 0 1px;
                     border-left-color: lighten($brand-primary, 20%);
                 }
             }
@@ -63,13 +64,13 @@
                 &,
                 &:hover,
                 &:focus{
-                    border-width: 0 2px 0 0;
+                    border-width: 0 1px 0 0;
                     border-right-color: lighten($brand-primary, 20%);
                 }
             }
             &.active >a{
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-                transform: translate(0, -2px);
+                transform: translate3d(1px,0,0);
             } 
             &.active >a,
             &.active >a:hover,

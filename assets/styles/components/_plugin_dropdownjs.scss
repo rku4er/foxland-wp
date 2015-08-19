@@ -5,7 +5,7 @@
             border-color: $input-border;
             &:hover,
             &:focus{
-                border-color: lighten($brand-primary, 10%);
+                border-color: $input-border-focus;
             }
         }
     }

@@ -1,6 +1,8 @@
 .page-header{
     border: 0 none;
     padding-bottom: 0;
+    margin-top: $grid-gutter-width * 2; 
+    margin-bottom: $grid-gutter-width; 
     h1,h2{
         margin: 0;
     }

@@ -133,7 +133,7 @@ if (current_theme_supports('bootstrap-gallery')) {
  * Add class="thumbnail img-thumbnail" to attachment items
  */
 function attachment_link_class($html) {
-  $html = str_replace('<a', '<a class="thumbnail img-thumbnail"', $html);
+    $html = str_replace('<a', '<a class="thumbnail img-thumbnail"', $html);
   return $html;
 }
 add_filter('wp_get_attachment_link', __NAMESPACE__ . '\\attachment_link_class', 10, 1);

@@ -17,6 +17,9 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
+h1, h2, h3, h4, h5, h6{
+     margin: 1em 0 0.5em;
+}
 .row{
     width: auto;
 }
@@ -43,3 +46,12 @@ body {
 /*.navbar-default .form-inline .input-group .form-control{*/
      /*width: auto;*/
 /*}*/
+
+.list-group-item{
+    transition: background-color 0.1s ease-in-out;
+}
+.list-group-item,
+.panel{
+    border-left-color: transparent;
+    border-right-color: transparent;
+}

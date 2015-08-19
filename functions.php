@@ -22,7 +22,8 @@ $sage_includes = [
   'lib/gallery.php',               // Custom [gallery] modifications
   'lib/extras.php',                // Custom functions
   'lib/shortcodes.php',            // Custom shortcodes
-  'lib/options.php',               // Theme Options
+  'lib/options.php',               // ACF Options
+  'admin/admin-init.php',          // Redux Options
 ];
 
 foreach ($sage_includes as $file) {

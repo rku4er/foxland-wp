@@ -1,11 +1,12 @@
 .gallery{
     .gallery-row{
+        margin-left: 0;
+        margin-right: 0;
         &+.gallery-row{
             margin-top: 30px;
         }
         & >div[class^="col-"]{
-            padding-bottom: 15px;
-            padding-top: 15px;
+            padding: 0;
         }
     }
     .thumb-wrapper{
@@ -14,7 +15,7 @@
             padding: 0;
             border: 0 none;
             border-radius: 0;
-            margin-bottom: 15px;
+            margin-bottom: 0;
             display: inline-block;
             position: relative;
             transition: .3s ease-in-out;
@@ -50,7 +51,7 @@
             }
             &:hover,
             &:focus{
-                transform: translate3d(0,-2px,0) scale3d(1.005,1.005,1);
+                transform: translate3d(0,-1px,0);
 
                 &:before{
                     opacity: 0.7;
@@ -66,25 +67,22 @@
         }
     }
 }
-img,
-iframe{
-    max-width: 100%;
-}
 img[class*="img-"],
 .img-thumbnail{
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     transition: .3s ease-in-out;
     transition-property: box-shadow, border-color, transform;
-    border-width: 2px;
+    border-width: 1px;
+    padding: 0;
 
 }
 a img[class*="img-"],
 a .img-thumbnail{
     &:hover,
     &:focus{
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         border-color: $brand-primary;
-        transform: translate3d(0,-2px,0) scale3d(1.005,1.005,1);
+        transform: translate3d(0,-1px,0);
     }
 
 }
